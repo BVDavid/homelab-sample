@@ -1,0 +1,33 @@
+# General Rule: Ignore the contents of ALL service folders
+# This pattern assumes that any directory containing run data/configs
+# is a direct or nested subdirectory under one of your Stack folders.
+
+# Ignore everything inside all directories recursively (/**)
+# This is very broad, so we MUST follow up with exceptions.
+**/*
+
+# Exceptions (Un-ignore items we must keep)
+
+# 1. Un-ignore all top-level Stack folders so they appear tracked
+!HomeAssistantStack/
+!InfrastructureStack/
+!MediaStack/
+!MonitoringStack/
+!NetworkingStack/
+
+# 2. Un-ignore the .gitignore file itself (essential)
+!.gitignore
+!.README.md
+
+# 3. Explicitly UN-IGNORE (Keep) all YAML files
+# This will re-include all .yml and .yaml files, regardless of where they are,
+# even if they are inside a folder that gets ignored later.
+!*.yml
+!*.yaml
+!*.env
+
+# 4. Un-ignore the .gitkeep file inside EVERY tracked folder.
+# This rule ensures the service folders themselves are tracked, even if empty,
+# which allows the parent folders (like motioneye/) to remain tracked while their
+# contents are ignored by the general **/* rule above.
+!.gitkeep

@@ -1,0 +1,6 @@
+include:
+  - HomeAssistantStack/docker-compose.yml
+  - InfrastructureStack/docker-compose.yml
+  - MediaStack/docker-compose.yml
+  - MonitoringStack/docker-compose.yml
+  - NetworkingStack/docker-compose.yml

@@ -1,0 +1,19 @@
+services:
+
+  emby:
+    image: emby/embyserver
+    container_name: embyserver
+    environment:
+      - UID=1000
+      - GID=1000
+    volumes:
+      - ./emby:/config
+      # uses the variable from .env for NAS
+      - ${MEDIA_NAS_MOVIES_PATH}:/data/movies
+      # uses the variable from .env for local media library copy
+      - ${MEDIA_NAS_MINIPC_PATH}:/data/MoviesFromMiniPC
+    ports:
+      - 8096:8096 #HTTP port
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped

@@ -1,0 +1,17 @@
+services:
+
+  motioneye:
+    privileged: True
+    image: ccrisan/motioneye:master-amd64
+    container_name: motioneye
+    restart: unless-stopped
+    ports:
+      - "8765:8765"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./motioneye/shared:/shared
+      - ./motioneye/etc:/etc/motioneye
+      - ./motioneye/data:/var/lib/motioneye
+    devices:
+      - "/dev/video0:/dev/video0"
+      - "/dev/video0:/dev/video1"
